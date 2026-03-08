@@ -1,4 +1,5 @@
 bin/
+bin-run/
 obj/
 *.user
 .vs/
