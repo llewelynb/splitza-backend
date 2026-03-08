@@ -6,6 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>Splitza.Api</RootNamespace>
     <UseAppHost>false</UseAppHost>
+    <!-- Separate run output from the path the C# language server locks -->
+    <OutputPath Condition="'$(RunOutput)' == 'true'">bin-run\</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>
