@@ -1,15 +1,12 @@
 using Microsoft.EntityFrameworkCore;
+using Scalar.AspNetCore;
 using Splitza.Api.Data;
 using Splitza.Api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(c =>
-{
-    c.SwaggerDoc("v1", new() { Title = "Splitza API", Version = "v1" });
-});
+builder.Services.AddOpenApi();
 
 // Database
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
@@ -34,8 +31,9 @@ var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    app.MapOpenApi();
+    // Scalar UI: http://localhost:5000/scalar/v1
+    app.MapScalarApiReference();
 }
 
 app.UseCors();
