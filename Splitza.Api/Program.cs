@@ -10,7 +10,7 @@ builder.Services.AddOpenApi();
 
 // Database
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
-    ?? "Host=localhost;Database=splitza;Username=postgres;Password=postgres";
+    ?? "Host=localhost;Port=5437;Database=splitza;Username=splitza;Password=splitza";
 builder.Services.AddDbContext<AppDbContext>(opt =>
     opt.UseNpgsql(connectionString));
 

@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: splitza-postgres
+    environment:
+      POSTGRES_DB: splitza
+      POSTGRES_USER: splitza
+      POSTGRES_PASSWORD: splitza
+    ports:
+      - "5437:5432"
+    volumes:
+      - splitza-pgdata:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  splitza-pgdata:
